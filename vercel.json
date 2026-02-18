@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "name": "shopify-bsale-app",
+  "builds": [
+    {
+      "src": "src/server/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/client/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "src/server/index.js"
+    },
+    {
+      "src": "/webhooks/(.*)",
+      "dest": "src/server/index.js"
+    },
+    {
+      "src": "/health",
+      "dest": "src/server/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/client/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/client/index.html"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

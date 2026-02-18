@@ -1,0 +1,30 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "Bsale Integration"
+client_id = "YOUR_CLIENT_ID"
+application_url = "https://your-app-domain.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_orders,write_orders,read_products,write_products,read_inventory,write_inventory"
+
+[auth]
+redirect_urls = [
+  "https://your-app-domain.com/api/auth/callback",
+  "https://your-app-domain.com/api/auth"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+[app_proxy]
+url = "https://your-app-domain.com/api/proxy"
+subpath = "bsale"
+prefix = "apps"
+
+[pos]
+embedded = false
+
+[build]
+include_config_on_deploy = true
